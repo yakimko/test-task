@@ -18,7 +18,7 @@ import './DataTable.css';
 
 import Filter from '../Filter/Filter';
 
-import { fetchData } from '../../redux/dataSlice';
+import { decreaseProductCount, fetchData } from '../../redux/dataSlice';
 
 import { columnTitles } from './columns';
 
@@ -51,11 +51,7 @@ const DataTableComponent = () => {
   const handleBuy = (id, event) => {
     event.stopPropagation();
 
-    const updatedItems = filteredItems.map((item) =>
-      item.id === id ? { ...item, productCount: item.productCount - 1 } : item
-    );
-
-    dispatch({ type: 'data/updateItems', payload: updatedItems });
+    dispatch(decreaseProductCount({ itemId: id }));
   };
 
   const handleRowClick = (row) => {

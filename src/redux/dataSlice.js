@@ -47,6 +47,13 @@ const dataSlice = createSlice({
     setFilter: (state, action) => {
       state.filter = action.payload;
     },
+    decreaseProductCount: (state, action) => {
+      const { itemId } = action.payload;
+
+      state.items = state.items.map((item) =>
+        item.id === itemId ? { ...item, productCount: item.productCount - 1 } : item
+      );
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -60,13 +67,10 @@ const dataSlice = createSlice({
       .addCase(fetchData.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
-      })
-      .addCase('data/updateItems', (state, action) => {
-        state.items = action.payload;
       });
   },
 });
 
-export const { setFilter } = dataSlice.actions;
+export const { setFilter, decreaseProductCount } = dataSlice.actions;
 
 export default dataSlice.reducer;
