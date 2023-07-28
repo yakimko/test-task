@@ -1,0 +1,45 @@
+.table-wrapper {
+  flex: 1;
+  min-width: 0;
+}
+
+.table {
+  width: 100%;
+  min-width: 0;
+  overflow-y: auto;
+}
+
+.column {
+  white-space: nowrap;
+}
+
+.filter {
+  flex-basis: 25%;
+}
+
+.image-wrapper {
+  flex-basis: 25%;
+  padding: 25px;
+  background-color: #a9a9a9;
+  border: 1px solid #373636;
+}
+
+.image {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.row:hover, .row.selected {
+  cursor: pointer;
+  background-color: #f5f0f0;
+}
+
+.chart {
+  margin-top: 50px;
+}
